@@ -7,37 +7,17 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      # Yeh automated docker container saare sahi versions khud andar pack rakhta hai
+      - name: Build APK with Locked Buildozer Environment
+        uses: ArasPran/buildozer-action@v1
         with:
-          python-version: '3.10' # Kivy ke liye sabse safe aur stable version
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-
-      - name: Install System Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ccache libffi-dev libssl-dev autoconf libtool pkg-config zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libsqlite3-dev libreadline-dev tk-dev uuid-dev lzma-dev liblzma-dev zip unzip
-
-      - name: Install Stable Buildozer and Cython
-        run: |
-          python -m pip install --upgrade pip
-          # Versions ko lock kar diya hai taaki experimental bugs na aayein
-          pip install "buildozer==1.5.0" "cython<3.0.0" virtualenv
-
-      - name: Build APK with Buildozer
-        run: |
-          yes | buildozer -v android debug
+          buildozer_version: stable
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
