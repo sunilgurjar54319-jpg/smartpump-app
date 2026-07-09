@@ -1,4 +1,4 @@
-name: Build APK Natively
+name: Build APK
 
 on:
   push:
@@ -13,28 +13,16 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      # Kivy ka official automated tool jo sab kuch khud sahi version me setup karega
+      - name: Build APK using Official Kivy Action
+        uses: kivy/buildozer-action@v1
         with:
-          python-version: '3.11'
+          workdir: .
+          buildozer_version: stable
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
         with:
-          distribution: 'temurin'
-          java-version: '17'
-
-      - name: Install System Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ccache libffi-dev libssl-dev autoconf libtool pkg-config zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libsqlite3-dev libreadline-dev tk-dev uuid-dev lzma-dev liblzma-dev zip unzip
-
-      - name: Install Buildozer and Cython
-        run: |
-          python -m pip install --upgrade pip
-          pip install buildozer cython virtualenv
-
-      - name: Build APK with Buildozer
-        run: |
-          yes | buildozer -v android debug
+          name: SmartPump-APK
+          path: bin/*.apk
           
