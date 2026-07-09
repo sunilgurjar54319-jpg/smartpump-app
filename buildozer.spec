@@ -31,7 +31,7 @@ fullscreen = 1
 # Android specific configuration
 # =============================================================================
 
-# (int) Android API to use (GitHub runner ke pre-installed SDK se match karne ke liye)
+# (int) Android API to use (GitHub ke built-in SDK se match karne ke liye)
 android.api = 33
 
 # (int) Minimum API required
