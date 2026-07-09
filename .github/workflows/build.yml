@@ -34,28 +34,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install buildozer cython virtualenv
 
-      - name: Build APK with Buildozer (Auto-Detect Folder)
+      - name: Build APK with Buildozer
         run: |
-          # Spec file ko automatic dhoondhna agar woh sub-folder me ho
-          SPEC_PATH=$(find . -name "buildozer.spec" -print -quit)
-          
-          if [ -z "$SPEC_PATH" ]; then
-            echo "ERROR: buildozer.spec file poori repository mein kahin nahi mili! Kripya check karein ki aapne file upload ki hai ya nahi."
-            exit 1
-          fi
-          
-          DIR_PATH=$(dirname "$SPEC_PATH")
-          echo "Success: buildozer.spec mil gayi is folder mein: $DIR_PATH"
-          cd "$DIR_PATH"
-          
-          # Run buildozer smoothly
           yes | buildozer -v android debug
-
-      - name: Upload APK Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: SmartPump-APK
-          path: |
-            **/bin/*.apk
-            bin/*.apk
-            
+          
