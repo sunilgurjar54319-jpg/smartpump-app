@@ -6,19 +6,19 @@ title = SmartPump
 # (string) Package name
 package.name = smartpump
 
-# (string) Package domain (needed for android packaging)
+# (string) Package domain
 package.domain = org.smartpump
 
 # (string) Source code where the main.py lives
 source.dir = .
 
-# (list) Source files to include (let empty to include all the files)
+# (list) Source files to include
 source.include_exts = py,png,jpg,kv,atlas,json
 
 # (string) Application version
 version = 1.0
 
-# (list) Application requirements
+# SABSE BADA FIX: Yahan se ==2.3.0 hata diya hai taaki Kivy compile ho sake
 requirements = python3,kivy,requests
 
 # (str) Supported orientations
