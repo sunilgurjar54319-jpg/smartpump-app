@@ -19,7 +19,7 @@ source.include_exts = py,png,jpg,kv,atlas,json
 version = 1.0
 
 # (list) Application requirements
-requirements = python3,kivy==2.3.0,requests
+requirements = python3,kivy,requests
 
 # (str) Supported orientations
 orientation = portrait
@@ -31,8 +31,8 @@ fullscreen = 1
 # Android specific configuration
 # =============================================================================
 
-# (int) Android API to use (Buildozer 1.5.0 ke liye sabse perfect target)
-android.api = 31
+# (int) Android API to use
+android.api = 33
 
 # (int) Minimum API required
 android.minapi = 21
