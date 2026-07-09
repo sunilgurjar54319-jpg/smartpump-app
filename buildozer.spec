@@ -19,7 +19,7 @@ source.include_exts = py,png,jpg,kv,atlas,json
 version = 1.0
 
 # (list) Application requirements
-requirements = python3,kivy==2.3.0,requests
+requirements = python3,kivy,requests
 
 # (str) Supported orientations
 orientation = portrait
@@ -31,7 +31,7 @@ fullscreen = 1
 # Android specific configuration
 # =============================================================================
 
-# (int) Android API to use (Humne ise 33 kar diya hai jo super stable hai)
+# (int) Android API to use (GitHub runner ke pre-installed SDK se match karne ke liye)
 android.api = 33
 
 # (int) Minimum API required
