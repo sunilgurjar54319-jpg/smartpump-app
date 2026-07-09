@@ -19,8 +19,8 @@ source.include_exts = py,png,jpg,kv,atlas,json
 version = 1.0
 
 # (list) Application requirements
-# KEYWORD: Kivy, requests aur python3 yahan set hain
-requirements = python3,kivy,requests
+# HUMNE PYTHON VERSION KO 3.11 PAR LOCK KAR DIYA HAI
+requirements = python3==3.11.0,kivy,requests
 
 # (str) Supported orientations
 orientation = portrait
@@ -32,7 +32,7 @@ fullscreen = 1
 # Android specific configuration
 # =============================================================================
 
-# (int) Android API to use (Humne ise 31 par lock kiya hai)
+# (int) Android API to use
 android.api = 31
 
 # (int) Minimum API required
@@ -41,5 +41,5 @@ android.minapi = 21
 # (list) Android architectures to build for
 android.archs = arm64-v8a, armeabi-v7a
 
-# (bool) Allow root execution (required for github actions)
+# (bool) Allow root execution
 android.allow_root = 1
