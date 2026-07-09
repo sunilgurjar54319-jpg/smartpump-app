@@ -1,0 +1,33 @@
+name: Build APK with Buildozer
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch: # Isse aap manually bhi button daba kar build shuru kar sakte hain
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Get Buildozer Cache
+        uses: actions/cache@v4
+        with:
+          path: .buildozer
+          key: ${{ runner.os }}-buildozer-${{ hashFiles('buildozer.spec') }}
+
+      - name: Build APK using Buildozer Action
+        uses: ArtemSBulgakov/buildozer-action@v1
+        with:
+          workdir: .
+          buildozer_version: stable
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SmartPump-APK
+          path: bin/*.apk
+          
