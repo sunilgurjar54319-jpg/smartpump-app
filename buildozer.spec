@@ -18,9 +18,8 @@ source.include_exts = py,png,jpg,kv,atlas,json
 # (string) Application version
 version = 1.0
 
-# (list) Application requirements
-# HUMNE PYTHON VERSION KO 3.11 PAR LOCK KAR DIYA HAI
-requirements = python3==3.11.0,kivy,requests
+# (list) Application requirements (Isse bilkul mat chhedna)
+requirements = python3,kivy,requests
 
 # (str) Supported orientations
 orientation = portrait
@@ -40,6 +39,10 @@ android.minapi = 21
 
 # (list) Android architectures to build for
 android.archs = arm64-v8a, armeabi-v7a
+
+# (str) python-for-android branch to use
+# CRITICAL FIX: Yeh experimental Python 3.14 ko rok kar stable version chalayega
+p4a.branch = stable
 
 # (bool) Allow root execution
 android.allow_root = 1
